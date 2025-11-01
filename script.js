@@ -64,13 +64,7 @@ function openOverlayFor(card) {
     overlayContent.innerHTML = `
       <h2>Promotional Plan</h2>
       <p>
-        <strong>Phase 1:</strong> Teasers and announcements on social platforms with countdown posters.
-        <br><br>
-        <strong>Phase 2:</strong> Short video trailers on TikTok, Instagram Reels, and YouTube Shorts.
-        <br><br>
-        <strong>Phase 3:</strong> Collaboration with influencers and related artists to boost visibility.
-        <br><br>
-        <strong>Phase 4:</strong> Post-launch fan interaction streams, giveaways, and Q&A sessions to keep engagement high.
+       Pending...
       </p>
     `;
   } else if (type === 'posters') {
