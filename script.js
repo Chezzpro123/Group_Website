@@ -59,6 +59,42 @@ function openOverlayFor(card) {
         <br><br>
         Each segment will focus on one key topic supported by discussions, videos, and personal insights. The full outline details topics like "The Evolution of Stagecraft", "Performing Arts in Education", and "Cultural Preservation Through Performance".
       </p>
+      <br><br>
+      <h1>4:00-4:05 | Critical thinking</h1>
+      <p>
+      The stream opens with a short video that encourages viewers to think critically. This serves as an icebreaker and sets the tone for that discussion.
+      </p>
+
+      <br><br>
+      <h1>4:05–4:10 | Introduction to Theater and Performing Arts</h1>
+      <p>
+      We’ll narrate a video explaining the foundations of Theater and Performing Arts, introducing the main theme and why it remains a vital part of education and culture.
+      </p>
+
+      <br><br>
+      <h1>4:10–4:20 | Theater’s Connection to Social Awareness</h1>
+      <p>
+      In this segment, we share our research and insights on how performing arts can raise social awareness and address real-life issues.
+      (Example: how plays and performances can reflect or critique society.)
+      </p>
+
+      <br><br>
+      <h1>4:20–4:30 | Theater’s Role in Educational Development</h1>
+      <p>
+      We discuss how engaging in theater activities enhances students’ creativity, communication, and teamwork, contributing to their overall educational growth.
+      </p>
+
+      <br><br>
+      <h1>4:30–4:40 | Personal and Emotional Growth</h1>
+      <p>
+      We explain how theater helps individuals build empathy, confidence, and emotional intelligence through performance and storytelling.
+      </p>
+
+      <>br><br>
+      <h1>4:40–4:45 | Conclusion</h1>
+      <p>
+      The stream wraps up with a short summary of key insights from all segments, highlighting how performing arts shape both individuals and communities.
+      </p>
     `;
   } else if (type === 'plan') {
     overlayContent.innerHTML = `
