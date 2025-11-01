@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Streaming Project Showcase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Glow orb that follows the cursor (only visible in dark mode) -->
+  <div class="glow" aria-hidden="true"></div>
+
+  <!-- Toggle -->
+  <button class="toggle" id="modeToggle" aria-pressed="false">☀️ Light Mode</button>
+
+  <div class="container">
+    <h1 class="title">🎬 Streaming Project Website</h1>
+
+    <section class="card" data-card="outline" tabindex="0" aria-label="Streaming Outline">
+      <h2>Streaming Outline</h2>
+      <p>
+        Example: Weekly episodes every Friday at 8PM (JST). Platforms: YouTube + Twitch.
+        Concept: Long-form lore streams + highlight shorts. Target: anime/gaming audience.
+        Click to expand and read full details.
+      </p>
+    </section>
+
+    <section class="card" data-card="plan" tabindex="0" aria-label="Promotional Plan">
+      <h2>Promotional Plan</h2>
+      <p>
+        Teaser timeline: 3-week countdown + poster drops, trailer on Week 2, collab stream on launch day.
+        Social plan: 3 TikToks, 5 IG posts, 7 tweets, and community discord teasers.
+        Click to expand and read full details.
+      </p>
+    </section>
+
+    <section class="card" data-card="posters" tabindex="0" aria-label="Posters">
+      <h2>Posters</h2>
+      <div class="poster-carousel" aria-roledescription="carousel">
+        <button class="carousel-btn left" aria-label="Previous poster">‹</button>
+        <div class="carousel-track">
+          <img src="poster1.jpg" alt="Poster 1" class="carousel-item">
+          <img src="poster2.jpg" alt="Poster 2" class="carousel-item">
+          <img src="poster3.jpg" alt="Poster 3" class="carousel-item">
+        </div>
+        <button class="carousel-btn right" aria-label="Next poster">›</button>
+        <div class="carousel-dots" aria-hidden="true"></div>
+      </div>
+      <p class="muted">Click the section to open fullscreen gallery and info.</p>
+    </section>
+
+    <section class="card" data-card="video" tabindex="0" aria-label="Promo Video">
+      <h2>Promo Video</h2>
+      <video controls preload="metadata" class="poster-video">
+        <source src="promo.mp4" type="video/mp4" />
+        Your browser doesn't support HTML5 video.
+      </video>
+      <p class="muted">Click to expand and watch larger.</p>
+    </section>
+
+  </div>
+
+  <!-- Fullscreen overlay for expanded section -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="overlay-inner" role="dialog" aria-modal="true">
+      <button class="overlay-close" id="overlayClose" aria-label="Close">✕</button>
+      <div id="overlayContent" class="overlay-content"></div>
+      <div class="overlay-footer">
+        <small class="muted">Press Esc or click ✕ to close</small>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
