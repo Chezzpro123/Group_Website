@@ -117,7 +117,7 @@ function initCarousel(root, opts = { auto: true }) {
       if (i !== idx) {
         go(i);
       } else {
-        openSpotlight(img.src, img.alt);
+        openSpotlight(img.src, img.alt, root, idx, items);
       }
     });
   });
@@ -146,13 +146,16 @@ document.querySelectorAll(".poster-carousel").forEach((c) => initCarousel(c, { a
 
 // Lightweight spotlight implementation
 let spotlightEl = null;
-function openSpotlight(src, alt) {
+let spotlightCarousel = null;
+function openSpotlight(src, alt, carousel, currentIdx, items) {
   if (!spotlightEl) {
     spotlightEl = document.createElement("div");
     spotlightEl.className = "overlay open";
     spotlightEl.innerHTML = `
       <div class="overlay-inner spotlight" role="dialog" aria-modal="true">
         <button class="overlay-close" aria-label="Close">✕</button>
+        <button class="spotlight-nav left" aria-label="Previous poster">‹</button>
+        <button class="spotlight-nav right" aria-label="Next poster">›</button>
         <div class="overlay-content">
           <img class="spotlight-img" src="" alt="" />
         </div>
@@ -167,6 +170,36 @@ function openSpotlight(src, alt) {
   img.alt = alt || "Poster";
   spotlightEl.classList.add("open");
   spotlightEl.setAttribute("aria-hidden", "false");
+  
+  // Handle carousel navigation buttons if carousel is provided
+  spotlightCarousel = { carousel, items, currentIdx };
+  const leftBtn = spotlightEl.querySelector(".spotlight-nav.left");
+  const rightBtn = spotlightEl.querySelector(".spotlight-nav.right");
+  
+  if (carousel && items) {
+    leftBtn.style.display = "block";
+    rightBtn.style.display = "block";
+    leftBtn.onclick = () => navigateSpotlightCarousel(-1);
+    rightBtn.onclick = () => navigateSpotlightCarousel(1);
+  } else {
+    leftBtn.style.display = "none";
+    rightBtn.style.display = "none";
+  }
+}
+
+function navigateSpotlightCarousel(direction) {
+  if (!spotlightCarousel) return;
+  const { carousel, items } = spotlightCarousel;
+  const track = carousel.querySelector(".carousel-track");
+  const currentActive = track.querySelector(".carousel-item.active");
+  const currentIdx = items.indexOf(currentActive);
+  const newIdx = (currentIdx + direction + items.length) % items.length;
+  
+  items.forEach((it, i) => it.classList.toggle("active", i === newIdx));
+  const newImg = items[newIdx];
+  const img = spotlightEl.querySelector(".spotlight-img");
+  img.src = newImg.src;
+  img.alt = newImg.alt;
 }
 function closeSpotlight() {
   if (!spotlightEl) return;

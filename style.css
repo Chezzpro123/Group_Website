@@ -292,6 +292,31 @@ body.dark .overlay-inner {
   cursor: pointer;
 }
 
+/* Spotlight navigation buttons */
+.spotlight-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;
+  border: 0;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background 160ms ease;
+}
+.spotlight-nav:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+.spotlight-nav.left {
+  left: 12px;
+}
+.spotlight-nav.right {
+  right: 12px;
+}
+
 /* when overlay is active, we add an aura using the same accent color */
 .overlay-inner.aura {
   box-shadow: 0 40px 140px rgba(100, 255, 218, 0.12), 0 6px 30px rgba(100, 255, 218, 0.06);
