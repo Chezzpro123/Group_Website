@@ -36,8 +36,8 @@ document.addEventListener("mousemove", (e) => {
 cards.forEach((card) => {
   card.addEventListener("mouseenter", () => card.classList.add("lit"));
   card.addEventListener("mouseleave", () => card.classList.remove("lit"));
-  // Only open the global overlay for non-poster cards
-  if ((card.dataset.card || "") !== "posters") {
+  // Only open the global overlay for specific cards (exclude posters and video)
+  if ((card.dataset.card || "") !== "posters" && (card.dataset.card || "") !== "video") {
     card.addEventListener("click", () => openOverlayFor(card));
     card.addEventListener("keyup", (e) => {
       if (e.key === "Enter" || e.key === " ") openOverlayFor(card);
@@ -172,4 +172,30 @@ function closeSpotlight() {
   if (!spotlightEl) return;
   spotlightEl.classList.remove("open");
   spotlightEl.setAttribute("aria-hidden", "true");
+}
+
+// Mobile handling for documentary link: try fullscreen-like iframe; fallback to navigation
+(function setupDocLink() {
+  const link = document.getElementById("docLink");
+  if (!link) return;
+  const url = link.href;
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  }
+  link.addEventListener("click", (e) => {
+    if (!isMobile()) return; // desktop: allow default (new tab)
+    e.preventDefault();
+    openDocFullscreen(url);
+  });
+})();
+
+function openDocFullscreen(url) {
+  if (!spotlightEl) {
+    openSpotlight("", ""); // initialize container
+  } else {
+    spotlightEl.classList.add("open");
+    spotlightEl.setAttribute("aria-hidden", "false");
+  }
+  const content = spotlightEl.querySelector(".overlay-content");
+  content.innerHTML = '<iframe class="doc-iframe" src="' + url + '" allowfullscreen style="width:100vw;height:100vh;border:0;display:block;"></iframe>';
 }
