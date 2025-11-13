@@ -1,210 +1,282 @@
 /* ---------- THEME VARS ---------- */
-:root{
+:root {
   --bg: #f7f7f7;
   --text: #121212;
   --card: #ffffff;
   --muted: #6b6b6b;
-  --accent: rgba(100,255,218,0.35); /* glow color */
-  --accent-strong: rgba(100,255,218,0.9);
-  --accent-border: rgba(100,255,218,0.8);
+  --accent: rgba(100, 255, 218, 0.35);
+  --accent-strong: rgba(100, 255, 218, 0.9);
+  --accent-border: rgba(100, 255, 218, 0.8);
   --transition-fast: 180ms;
 }
 
 /* DARK THEME */
-body.dark{
+body.dark {
   --bg: #060607;
   --text: #f4f4f5;
   --card: #0f1112;
   --muted: #9a9a9a;
-  --accent: rgba(100,255,218,0.25);
-  --accent-strong: rgba(100,255,218,0.95);
-  --accent-border: rgba(100,255,218,0.92);
+  --accent: rgba(100, 255, 218, 0.25);
+  --accent-strong: rgba(100, 255, 218, 0.95);
+  --accent-border: rgba(100, 255, 218, 0.92);
 }
 
 /* ---------- BASE ---------- */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  overflow-y:scroll;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
 }
 
 /* ---------- GLOW ORB ---------- */
-.glow{
-  position:fixed;
-  top:0; left:0;
-  width:320px; height:320px;
-  border-radius:50%;
-  background: radial-gradient(circle, var(--accent) 0%, rgba(0,0,0,0) 60%);
+.glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent) 0%, rgba(0, 0, 0, 0) 60%);
   filter: blur(80px);
-  transform: translate(-50%,-50%);
-  pointer-events:none;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
   z-index: 5;
-  opacity:0; transition: opacity var(--transition-fast) ease;
+  opacity: 0;
+  transition: opacity var(--transition-fast) ease;
 }
-body.dark .glow{ opacity:1 }
+body.dark .glow {
+  opacity: 1;
+}
 
 /* ---------- TOGGLE ---------- */
-.toggle{
-  position:fixed;
-  top:18px; right:18px;
-  z-index:40;
-  background:var(--card);
-  color:var(--text);
-  border:0;
-  padding:10px 14px;
-  border-radius:999px;
-  cursor:pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+.toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 40;
+  background: var(--card);
+  color: var(--text);
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-.toggle:active{ transform: scale(0.98) }
+.toggle:active {
+  transform: scale(0.98);
+}
 
 /* ---------- LAYOUT ---------- */
-.container{
-  max-width:1000px;
+.container {
+  max-width: 1000px;
   margin: 70px auto;
   padding: 24px;
 }
-.title{ text-align:center; margin:0 0 10px 0; font-size:1.6rem }
+.title {
+  text-align: center;
+  margin: 0 0 10px 0;
+  font-size: 1.6rem;
+}
 
 /* ---------- CARD / SECTIONS ---------- */
-.card{
-  background:var(--card);
-  border-radius:12px;
-  padding:24px;
-  margin:28px 0;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
-  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 28px 0;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+  transition: transform 300ms cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
   border: 2px solid transparent;
-  position:relative;
-  cursor:pointer;
+  position: relative;
+  cursor: pointer;
   outline: none;
 }
-.card:focus{ box-shadow: 0 10px 28px rgba(2,6,23,0.08); transform: translateY(-2px)}
+.card:focus {
+  box-shadow: 0 10px 28px rgba(2, 6, 23, 0.08);
+  transform: translateY(-2px);
+}
 
 /* when hover in dark mode: lighten with glow */
-body.dark .card:hover{
-  box-shadow: 0 18px 40px rgba(2,10,20,0.45);
+body.dark .card:hover {
+  box-shadow: 0 18px 40px rgba(2, 10, 20, 0.45);
   transform: translateY(-4px);
 }
 
 /* spotlight when lit (used with JS to sync with glow color) */
-.card.lit{
-  box-shadow: 0 20px 60px rgba(100,255,218,0.18);
+.card.lit {
+  box-shadow: 0 20px 60px rgba(100, 255, 218, 0.18);
   border-color: var(--accent-border);
 }
 
 /* posters layout */
-.poster-carousel{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  position:relative;
+.poster-carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
 }
-.carousel-track{
-  overflow:hidden;
-  flex:1;
-  border-radius:10px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
-  min-height:140px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
+.carousel-track {
+  overflow: hidden;
+  flex: 1;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
-.carousel-item{
-  width:100%;
-  max-height:360px;
-  object-fit:cover;
-  display:block;
-  transition: transform 320ms ease, opacity 280ms ease, box-shadow 220ms ease;
-  opacity:0;
-  pointer-events:none;
-  user-select:none;
-  border-radius:10px;
-  margin:0;
+.carousel-item {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  display: block;
+  transition: transform 240ms ease, opacity 220ms ease, filter 220ms ease;
+  opacity: 0.7;
+  filter: blur(1.5px) grayscale(10%);
+  transform: scale(0.9);
+  pointer-events: auto;
+  user-select: none;
+  border-radius: 10px;
+  margin: 0;
+  cursor: pointer;
 }
-.carousel-item.active{
-  opacity:1;
-  pointer-events:auto;
+.carousel-item.active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
 }
+
+/* show buttons in main card */
+.card[data-card="posters"] .carousel-btn { display:inline-block }
+.overlay-content .carousel-btn { display:none }
 
 /* carousel buttons */
-.carousel-btn{
-  background:var(--card);
-  border:0;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+.carousel-btn {
+  background: var(--card);
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
-.carousel-btn:active{ transform:scale(0.97) }
+.carousel-btn:active {
+  transform: scale(0.97);
+}
 
 /* small text */
-.muted{ color:var(--muted); margin-top:8px }
+.muted {
+  color: var(--muted);
+  margin-top: 8px;
+}
 
 /* video */
-.poster-video{
-  width:100%;
-  border-radius:10px;
-  display:block;
-  margin-top:10px;
+.poster-video {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-top: 10px;
 }
 
 /* ---------- OVERLAY / FULLSCREEN EXPAND ---------- */
-.overlay{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: rgba(2,4,8,0.35);
-  z-index:60;
-  opacity:0;
-  pointer-events:none;
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 4, 8, 0.6); /* slightly darker for spotlight */
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 200ms ease;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(2px);
 }
-.overlay.open{ opacity:1; pointer-events:auto }
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-.overlay-inner{
+.overlay-inner {
   width: min(1100px, 96vw);
   height: min(820px, 92vh);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-  border-radius:14px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-  position:relative;
-  overflow:auto;
+  background: #ffffff; /* default modal background for non-spotlight */
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: auto;
   border: 6px solid transparent;
-  transition: transform 320ms cubic-bezier(.2,.9,.2,1), border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
-  padding:28px;
+  transition: transform 320ms cubic-bezier(0.2, 0.9, 0.2, 1), border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+  padding: 28px;
+}
+
+/* Spotlight variant: edge-to-edge image, no white background */
+.overlay-inner.spotlight {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Dark mode: keep inner overlay opaque but use dark card color for contrast */
+body.dark .overlay-inner {
+  background: #000000;
 }
 
 /* overlay content area */
-.overlay-content{
-  color:var(--text);
+.overlay-content {
+  color: var(--text);
 }
-.overlay-close{
-  position:absolute;
-  top:12px; right:12px;
-  z-index:80;
-  border:0;
-  background:rgba(0,0,0,0.35);
-  color:#fff;
-  padding:8px 10px;
-  border-radius:8px;
-  cursor:pointer;
+
+/* Spotlight image fills viewport without scrollbars */
+.overlay-inner.spotlight .overlay-content {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.overlay-inner.spotlight .spotlight-img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  display: block;
+}
+.overlay-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 80;
+  border: 0;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* when overlay is active, we add an aura using the same accent color */
-.overlay-inner.aura{
-  box-shadow: 0 40px 140px rgba(100,255,218,0.12), 0 6px 30px rgba(100,255,218,0.06);
+.overlay-inner.aura {
+  box-shadow: 0 40px 140px rgba(100, 255, 218, 0.12), 0 6px 30px rgba(100, 255, 218, 0.06);
 }
 
 /* ---------- CUSTOM SCROLLBAR ---------- */
@@ -220,7 +292,7 @@ body.dark .card:hover{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100,255,218,0.15);
+  background: rgba(100, 255, 218, 0.15);
   border-radius: 5px;
   border: 2px solid var(--bg);
   transition: background var(--transition-fast) ease;
@@ -242,11 +314,11 @@ body.dark .card:hover{
 }
 
 .overlay-inner::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .overlay-inner::-webkit-scrollbar-thumb {
-  background: rgba(100,255,218,0.2);
+  background: rgba(100, 255, 218, 0.2);
   border: 2px solid transparent;
   background-clip: padding-box;
 }
@@ -258,7 +330,13 @@ body.dark .card:hover{
 }
 
 /* responsive tweaks */
-@media (max-width:700px){
-  .overlay-inner{ height: 96vh; padding:18px }
-  .container{ padding:14px; margin-top:36px }
+@media (max-width: 700px) {
+  .overlay-inner {
+    height: 96vh;
+    padding: 18px;
+  }
+  .container {
+    padding: 14px;
+    margin-top: 36px;
+  }
 }
