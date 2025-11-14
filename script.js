@@ -198,8 +198,15 @@ function navigateSpotlightCarousel(direction) {
   items.forEach((it, i) => it.classList.toggle("active", i === newIdx));
   const newImg = items[newIdx];
   const img = spotlightEl.querySelector(".spotlight-img");
-  img.src = newImg.src;
-  img.alt = newImg.alt;
+  
+  // Fade out
+  img.style.opacity = "0";
+  setTimeout(() => {
+    img.src = newImg.src;
+    img.alt = newImg.alt;
+    // Fade in
+    img.style.opacity = "1";
+  }, 150);
 }
 function closeSpotlight() {
   if (!spotlightEl) return;

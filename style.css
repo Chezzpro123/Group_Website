@@ -278,6 +278,7 @@ body.dark .overlay-inner {
   height: 100vh;
   object-fit: contain;
   display: block;
+  transition: opacity 300ms ease;
 }
 .overlay-close {
   position: absolute;
