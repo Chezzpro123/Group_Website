@@ -13,16 +13,7 @@
   --transition-fast: 180ms;
 }
 
-/* DARK THEME */
-body.dark {
-  --bg: #060607;
-  --text: #f4f4f5;
-  --card: #0f1112;
-  --muted: #9a9a9a;
-  --accent: rgba(100, 255, 218, 0.25);
-  --accent-strong: rgba(100, 255, 218, 0.95);
-  --accent-border: rgba(100, 255, 218, 0.92);
-}
+
 
 /* ---------- BASE ---------- */
 * {
@@ -43,44 +34,7 @@ body {
   overflow-y: scroll;
 }
 
-/* ---------- GLOW ORB ---------- */
-.glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent) 0%, rgba(0, 0, 0, 0) 60%);
-  filter: blur(80px);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 5;
-  opacity: 0;
-  transition: opacity var(--transition-fast) ease;
-}
-body.dark .glow {
-  opacity: 1;
-}
 
-/* ---------- TOGGLE ---------- */
-.toggle {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 40;
-  background: var(--card);
-  color: var(--text);
-  border: 0;
-  padding: 10px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-.toggle:active {
-  transform: scale(0.98);
-}
 
 /* ---------- LAYOUT ---------- */
 .container {
@@ -112,11 +66,7 @@ body.dark .glow {
   transform: translateY(-2px);
 }
 
-/* when hover in dark mode: lighten with glow */
-body.dark .card:hover {
-  box-shadow: 0 18px 40px rgba(2, 10, 20, 0.45);
-  transform: translateY(-4px);
-}
+
 
 /* spotlight when lit (used with JS to sync with glow color) */
 .card.lit {
@@ -258,10 +208,7 @@ body.dark .card:hover {
   overflow: hidden;
 }
 
-/* Dark mode: keep inner overlay opaque but use dark card color for contrast */
-body.dark .overlay-inner {
-  background: #000000;
-}
+
 
 /* overlay content area */
 .overlay-content {

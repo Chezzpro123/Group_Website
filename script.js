@@ -1,36 +1,8 @@
-const body = document.body;
-const toggleBtn = document.getElementById("modeToggle");
-const glow = document.querySelector(".glow");
 const cards = Array.from(document.querySelectorAll(".card"));
 const overlay = document.getElementById("overlay");
 const overlayInner = document.querySelector(".overlay-inner");
 const overlayContent = document.getElementById("overlayContent");
 const overlayClose = document.getElementById("overlayClose");
-
-/* THEME TOGGLE */
-toggleBtn.addEventListener("click", () => {
-  const isDark = body.classList.toggle("dark");
-  toggleBtn.textContent = isDark ? "🌙 Dark Mode" : "☀️ Light Mode";
-  toggleBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
-});
-
-/* GLOW ORB */
-let mouseX = 0,
-  mouseY = 0,
-  orbX = 0,
-  orbY = 0;
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-(function animate() {
-  orbX += (mouseX - orbX) * 0.18;
-  orbY += (mouseY - orbY) * 0.18;
-  glow.style.transform = `translate(${orbX - glow.offsetWidth / 2}px, ${
-    orbY - glow.offsetHeight / 2
-  }px)`;
-  requestAnimationFrame(animate);
-})();
 
 /* CARD HOVER */
 cards.forEach((card) => {
