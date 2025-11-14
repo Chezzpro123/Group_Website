@@ -1,8 +1,11 @@
+/* ---------- FONT IMPORT ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 /* ---------- THEME VARS ---------- */
 :root {
   --bg: #f7f7f7;
   --text: #121212;
-  --card: #ffffff;
+  --card: #fdf6e3;
   --muted: #6b6b6b;
   --accent: rgba(100, 255, 218, 0.35);
   --accent-strong: rgba(100, 255, 218, 0.9);
@@ -31,8 +34,9 @@ body {
 }
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: var(--bg);
+  font-family: 'Pacifico', cursive;
+  background: var(--bg) url('images/vintage\ paper\ texture.jpg') repeat;
+  background-attachment: fixed;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -230,7 +234,7 @@ body.dark .card:hover {
 .overlay-inner {
   width: min(1100px, 96vw);
   height: min(820px, 92vh);
-  background: #ffffff; /* default modal background for non-spotlight */
+  background: url('images/vintage\ paper\ texture\ second.jpg') repeat; /* default modal background for non-spotlight */
   border-radius: 14px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   position: relative;
